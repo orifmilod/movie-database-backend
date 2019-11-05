@@ -4,13 +4,12 @@ const router = express.Router();
 const { celebrate, Joi, errors } = require('celebrate');
 
 router.get('/', movieController.GetAllMovies);
-router.post('/',  
-celebrate({
+router.post('/', celebrate({
   body: Joi.object({
-    IMDbID: Joi.string().required()
+    movieTitle: Joi.string().required()
   })
 })
-, movieController.CreateMovie);
+,movieController.CreateMovie);
 
 router.use(errors());
 module.exports = router;

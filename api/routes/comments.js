@@ -6,8 +6,10 @@ const { celebrate, Joi, errors } = require('celebrate');
 router.get('/', commentController.GetAllComments);
 router.post('/', celebrate({
   body: Joi.object({
-    IMDbID: Joi.string().required()
+    comment: Joi.string().required(),
+    movieTitle: Joi.string().required()
   })
 }), commentController.AddComment);
+
 router.use(errors())
 module.exports = router;

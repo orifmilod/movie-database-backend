@@ -7,8 +7,8 @@ async function FetchAllMovies ()  {
   return { movies };
 }
 
-async function AddMovie(IMDbID) {
-  const response = await Axios.get(`http://www.omdbapi.com/?i=${IMDbID}&apikey=89e52f21`);
+async function AddMovie(movieTitle) {
+  const response = await Axios.get(`http://www.omdbapi.com/?t=${movieTitle}&apikey=${process.env.API_KEY}`);
   const { data } = response;
   const newMovie = new Movie({ 
     _id : mongoose.Types.ObjectId(), 
@@ -18,4 +18,4 @@ async function AddMovie(IMDbID) {
   const result = await newMovie.save();
   return result;
 }
-module.exports = { FetchAllMovies, AddMovie }
+module.exports = { FetchAllMovies, AddMovie };

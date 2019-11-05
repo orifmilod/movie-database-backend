@@ -1,15 +1,18 @@
 const Comment = require('../models/comment');
+const movie = require('../models/movie');
+const mongoose = require('mongoose');
 
 async function FetchAllComments ()  {
   const comments = await Comment.find();
   return { comments };
 }
 
-async function AddComment (comment, IMDbID)  {
+async function AddComment (comment, movieTitle) {
+  const foundMovie = await movie.find({ Title: movieTitle });
   const newComment = new Comment({ 
-    _id : mongoose.Types.ObjectId(), 
+    _id: mongoose.Types.ObjectId(), 
     comment,
-    movieID: IMDbID
+    movie_id: foundMovie[0]._id
   });
   const data = await newComment.save();
   return data;
