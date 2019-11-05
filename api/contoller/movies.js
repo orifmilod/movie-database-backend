@@ -9,17 +9,17 @@ exports.GetAllMovies = async (req, res, next) => {
     return res.status(200).json(movies);
   }
   catch (error) {
-    res.status(501).json({ message: 'Something went wrong!', error });
+    res.status(500).json({ message: 'Something went wrong, when trying to fetch movies!', error });
   }
 } 
 
 exports.CreateMovie = async (req, res, next) => {
-  const { IMDbID } = req.body;
-  try {
-    const newMovie = await AddMovie(IMDbID);
-    return res.status(201).json({ newMovie })
+  const { movieTitle } = req.body;
+  try { 
+    const newMovie = await AddMovie(movieTitle);
+    return res.status(201).json({ newMovie });
   }
-  catch(error) {
-    return res.status(501).json({ message: 'Something went wrong!', error })
+  catch (error) {
+    res.status(500).json({ message: 'Something went wrong, when trying to add movie!', error });
   }
 }

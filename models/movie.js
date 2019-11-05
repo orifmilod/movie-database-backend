@@ -26,6 +26,7 @@ const movie = new mongoose.Schema({
   BoxOffice:  String,
   Production: String,
   Website:    String,
-  "Response": String
+  "Response": String,
+  "Comments": Array
 });
 module.exports = mongoose.model('Movie', movie, 'movies');

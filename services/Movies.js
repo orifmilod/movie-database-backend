@@ -3,15 +3,19 @@ const Movie = require('../models/movie');
 const Axios = require('axios');
 
 async function FetchAllMovies ()  {
-  const data = await Movie.find();
-  return { movies: data }
+  const movies = await Movie.find();
+  return { movies };
 }
 
-async function AddMovie(IMDbID) {
-  const response = await Axios.get(`http://www.omdbapi.com/?i=${IMDbID}&apikey=89e52f21`);
+async function AddMovie(movieTitle) {
+  const response = await Axios.get(`http://www.omdbapi.com/?t=${movieTitle}&apikey=${process.env.API_KEY}`);
   const { data } = response;
-  const newMovie = new Movie({ _id : mongoose.Types.ObjectId(), ...data });
+  const newMovie = new Movie({ 
+    _id : mongoose.Types.ObjectId(), 
+    Comments: [],
+    ...data, 
+  });
   const result = await newMovie.save();
   return result;
 }
-module.exports = { FetchAllMovies, AddMovie }
+module.exports = { FetchAllMovies, AddMovie };
