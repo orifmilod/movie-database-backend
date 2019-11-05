@@ -4,7 +4,7 @@ const router = express.Router();
 const { celebrate, Joi, errors } = require('celebrate');
 
 router.get('/', movieController.GetAllMovies);
-router.post('/add-movie',  
+router.post('/',  
 celebrate({
   body: Joi.object({
     IMDbID: Joi.string().required()
@@ -12,5 +12,5 @@ celebrate({
 })
 , movieController.CreateMovie);
 
-router.use(errors())
+router.use(errors());
 module.exports = router;
