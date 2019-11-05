@@ -1,14 +1,12 @@
-const Movie = require('../../db/models/movie');
-const Axios  = require('axios');
-const mongoose = require('mongoose');
+const { FetchAllMovies, AddMovie } = require('../../services/Movies');
 
 exports.GetAllMovies = async (req, res, next) => {
   try {
-    const data = await Movie.find();
-    if (!data) { 
+    const movies = await FetchAllMovies();
+    if (!movies) { 
       return res.status(404).json({ message: 'No movies found in database!' });
     }
-    return res.status(200).json(data);
+    return res.status(200).json(movies);
   }
   catch (error) {
     res.status(501).json({ message: 'Something went wrong!', error });
@@ -16,16 +14,10 @@ exports.GetAllMovies = async (req, res, next) => {
 } 
 
 exports.CreateMovie = async (req, res, next) => {
-  const { id } = req.body;
+  const { IMDbID } = req.body;
   try {
-    const response = await Axios.get(`http://www.omdbapi.com/?i=${id}&apikey=89e52f21`);
-    const { data } = response;
-    const newMoview = new Movie({ 
-      _id : mongoose.Types.ObjectId(),
-      ...data
-    });
-    const result = await newMoview.save();
-    return res.status(201).json(result)
+    const newMovie = await AddMovie(IMDbID);
+    return res.status(201).json({ newMovie })
   }
   catch(error) {
     return res.status(501).json({ message: 'Something went wrong!', error })
