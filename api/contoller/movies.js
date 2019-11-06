@@ -2,7 +2,8 @@ const { fetchAllMovies, addMovie } = require('../../services/movies');
 
 exports.getAllMovies = async (req, res) => {
   try {
-    const movies = await fetchAllMovies();
+    const { query } = req;
+    const movies = await fetchAllMovies(query);
     if (!movies) {
       return res.status(404).json({ message: 'No movies found in database!' });
     }

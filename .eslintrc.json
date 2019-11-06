@@ -15,6 +15,9 @@
   },
   "rules": {
     "no-unused-vars": "warn",
+    "func-names": "off",
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
     "no-console": "off",
     "prettier/prettier": "error"
   }

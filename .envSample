@@ -1,3 +1,3 @@
-DB_URL='<Your mongodb URI>'
-PORT='<Your choosen port>'
-API_KEY='<API key for omdbapi>'
+DB_URL='<Your mongodb URI>' || 'mongodb://localhost:5000'
+PORT='<Your choosen port>'  || 'movies_api'
+API_KEY='<API key for omdbapi>' || 'ABC'
