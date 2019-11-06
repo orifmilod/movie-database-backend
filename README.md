@@ -75,16 +75,16 @@ This is simple REST API that interacts with external API (OMDb) build using Node
   For now it's the only type of response that you will receive if something will go wrong. The message property will contain information about the error.
     
     ```javascript
-{
-    "statusCode": 400,
-    "error": "Bad Request",
-    "message": "child \"movieTitle\" fails because [\"movieTitle\" is required]",
-    "validation": {
-        "source": "body",
-        "keys": [
-            "movieTitle"
-        ]
+    {
+      "statusCode": 400,
+      "error": "Bad Request",
+      "message": "child \"movieTitle\" fails because [\"movieTitle\" is required]",
+      "validation": {
+          "source": "body",
+          "keys": [
+              "movieTitle"
+          ]
+      }
     }
-}
     ```
 If you are missing some parameters in the body you will recieve this error, (routers are protected with <b>celebrate</b> and <b>Joi</b> packages)
