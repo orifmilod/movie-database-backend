@@ -11,11 +11,11 @@ describe('GET /comments', () => {
       .set('Accept', 'application/json')
       .expect(200)
       .then(res => {
-        const { comments } = res.body;
+        const comments = res.body;
         expect(comments).to.be.a('array');
         expect(comments[0]).to.have.all.keys(
           '_id',
-          'movieTitle',
+          'movieID',
           'comment',
           '__v'
         );
@@ -37,7 +37,7 @@ describe('POST /comments', () => {
       .then(res => {
         const { result } = res.body;
         expect(result).to.be.a('object');
-        expect(result).to.have.all.keys('_id', 'movieTitle', 'comment', '__v');
+        expect(result).to.have.all.keys('_id', 'movieID', 'comment', '__v');
       });
   });
 

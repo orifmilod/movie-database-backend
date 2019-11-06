@@ -23,7 +23,6 @@ async function addMovie(movieTitle) {
 
   const newMovie = new Movie({
     _id: mongoose.Types.ObjectId(),
-    Comments: [],
     ...data
   });
   const result = await newMovie.save();
