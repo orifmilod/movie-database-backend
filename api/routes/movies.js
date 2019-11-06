@@ -1,15 +1,19 @@
 const express = require('express');
-const movieController = require('../contoller/movies');
-const router = express.Router();
 const { celebrate, Joi, errors } = require('celebrate');
+const movieController = require('../contoller/movies');
 
-router.get('/', movieController.GetAllMovies);
-router.post('/', celebrate({
-  body: Joi.object({
-    movieTitle: Joi.string().required()
-  })
-})
-,movieController.CreateMovie);
+const router = express.Router();
+
+router.get('/', movieController.getAllMovies);
+router.post(
+  '/',
+  celebrate({
+    body: Joi.object({
+      movieTitle: Joi.string().required()
+    })
+  }),
+  movieController.createMovie
+);
 
 router.use(errors());
 module.exports = router;

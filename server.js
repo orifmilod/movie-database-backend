@@ -2,7 +2,7 @@ const express = require('express');
 const { PORT } = require('./config');
 const loaders = require('./loaders');
 
-async function startServer() {    
+async function startServer() {
   const app = express();
   await loaders.init({ expressApp: app });
   // API Routes
