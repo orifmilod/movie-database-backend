@@ -10,6 +10,9 @@ async function FetchAllMovies ()  {
 async function AddMovie(movieTitle) {
   const response = await Axios.get(`http://www.omdbapi.com/?t=${movieTitle}&apikey=${process.env.API_KEY}`);
   const { data } = response;
+  if(data.Response === 'False') 
+    throw new Error('No such movie was found');
+  
   const newMovie = new Movie({ 
     _id : mongoose.Types.ObjectId(), 
     Comments: [],
