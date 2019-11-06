@@ -11,7 +11,7 @@ describe('GET /movies', () => {
       .set('Accept', 'application/json')
       .expect(200)
       .then(res => {
-        const { movies } = res.body;
+        const movies = res.body;
         expect(movies).to.be.a('array');
         expect(movies[0]).to.have.property('Title');
       });
@@ -31,7 +31,7 @@ describe('POST /movies', () => {
       .then(res => {
         const { newMovie } = res.body;
         expect(newMovie).to.be.a('object');
-        expect(Object.keys(newMovie).length).to.equal(28);
+        expect(Object.keys(newMovie).length).to.equal(27);
       });
   });
 

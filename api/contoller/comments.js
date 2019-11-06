@@ -2,17 +2,19 @@ const { addComment, fetchAllComments } = require('../../services/comments');
 
 exports.getAllComments = async (req, res) => {
   try {
-    const comments = await fetchAllComments();
-    if (!comments) {
+    const { query } = req;
+    const { comments } = await fetchAllComments(query);
+    if (comments.length < 1) {
       return res
         .status(404)
         .json({ message: 'No comments found in database!' });
     }
     return res.status(200).json(comments);
   } catch (error) {
-    return res
-      .status(400)
-      .json({ messege: 'Something went wrong when fetching comments!', error });
+    return res.status(500).json({
+      messege: 'Something went wrong, when trying to fetch comments!',
+      error
+    });
   }
 };
 

@@ -14,4 +14,10 @@ const commentSchema = new mongoose.Schema({
 // Implemented pagination
 commentSchema.query.paginate = require('../services/utils');
 
+commentSchema.query.filterByMovie = function({ movieID }) {
+  if (!movieID) {
+    return this;
+  }
+  return this.find(movieID);
+};
 module.exports = mongoose.model('Comment', commentSchema, 'comments');

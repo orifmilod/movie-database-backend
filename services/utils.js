@@ -1,6 +1,5 @@
 // Implement pagination
 function paginate({ page = 1, limit = 10 }) {
-  console.log('Paginating', limit);
   if (!page || !limit) {
     return this;
   }

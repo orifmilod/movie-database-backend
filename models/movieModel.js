@@ -26,8 +26,7 @@ const movieSchema = new mongoose.Schema({
   BoxOffice: String,
   Production: String,
   Website: String,
-  Response: String,
-  Comments: Array
+  Response: String
 });
 
 // Performs sorting based on provided object properties
@@ -60,7 +59,6 @@ movieSchema.query.filterByObject = function({ columns, values }) {
         SchemaPath.instance === 'String' ? new RegExp(Value) : Value;
     }
   }
-
   return this.find(Options);
 };
 
