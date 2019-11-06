@@ -20,6 +20,6 @@ exports.CreateMovie = async (req, res, next) => {
     return res.status(201).json({ newMovie });
   }
   catch (error) {
-    res.status(500).json({ message: 'Something went wrong, when trying to add movie!', error });
+    return res.status(400).json({ messege: 'Bad request! Could not find movie title', error });
   }
 }

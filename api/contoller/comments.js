@@ -9,7 +9,7 @@ exports.GetAllComments = async (req, res, next) => {
     return res.status(200).json(comments);
   }
   catch (error) {
-    return res.status(500).json({ messege: 'Something went wrong when fetching comments!', error });
+    return res.status(400).json({ messege: 'Something went wrong when fetching comments!', error });
   }
 } 
 
@@ -17,11 +17,11 @@ exports.GetAllComments = async (req, res, next) => {
 exports.AddComment = async (req, res, next) => {
   try {
     const { comment, movieTitle } = req.body;
-    const result = await AddComment(comment, movieTitle);
+    const result = await AddComment(comment, movieTitle);    
     return res.status(201).json({ messege: 'Comment has been added successfuly!', result });
   }
   catch (error) {
-    return res.status(500).json({ messege: 'Something went wrong when adding comment!', error });
+    return res.status(400).json({ messege: 'Bad request! Could not find movie title', error });
   }
 }
 
