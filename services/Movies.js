@@ -1,19 +1,25 @@
 const mongoose = require('mongoose');
-const Axios = require('axios');
-const Movie = require('../models/movie');
+const Movie = require('../models/movieModel');
 
-async function fetchAllMovies() {
-  const movies = await Movie.find();
+const { getMovieByTitle } = require('../api/Omdb');
+
+async function fetchAllMovies(query) {
+  const movies = await Movie.find()
+    .filterByObject(query)
+    .objectSort(query)
+    .paginate(query);
   return { movies };
 }
 
 async function addMovie(movieTitle) {
-  const response = await Axios.get(
-    `http://www.omdbapi.com/?t=${movieTitle}&apikey=${process.env.API_KEY}`
-  );
-  const { data } = response;
+  // If movie already exists in db
+  const movieFromDb = await Movie.findOne({ Title: movieTitle });
+  if (movieFromDb) {
+    return movieFromDb;
+  }
 
-  if (data.Response === 'False') throw new Error('No such movie was found');
+  const data = await getMovieByTitle(movieTitle);
+  if (!data) throw new Error('No such movie was found');
 
   const newMovie = new Movie({
     _id: mongoose.Types.ObjectId(),

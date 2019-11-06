@@ -1,9 +1,21 @@
 const mongoose = require('mongoose');
-const Comment = require('../models/comment');
-const movie = require('../models/movie');
+const Comment = require('../models/commentModel');
+const movie = require('../models/movieModel');
 
-async function fetchAllComments() {
-  const comments = await Comment.find();
+async function fetchAllComments(query) {
+  // Filter by movie ID
+  let comments = await Comment.find();
+  if (query.movieID) {
+    try {
+      comments = await comments.find({ movieID: query.movieID });
+      await comments.paginate(query);
+    } catch (error) {
+      throw new Error('Invalid Params');
+    }
+  }
+  if (!comments.length) {
+    throw new Error('No comments were found');
+  }
   return { comments };
 }
 
