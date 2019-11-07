@@ -69,9 +69,9 @@ https://movie-database-api1.herokuapp.com/api/v1/
   | limit  | Decides how many comments will be displayed per page. Default value is `10`.  |
   | movieID  | If provided it will fetch all comments associated with this movie ID.  |
   
-   Example query string `/comments?movieID=5b78643989f11114a411e1c3`.
+   Example query string `/comments?movieID=5dc45af63176aa19689e4ab9`.
    
-   It will fetch all comments for movie with ID `5b78643989f11114a411e1c3`.
+   It will fetch all comments for movie with ID `5dc45af63176aa19689e4ab9`.
   
    # Responses
    
