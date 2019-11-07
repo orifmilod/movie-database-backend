@@ -33,7 +33,7 @@ Currently server is hosted on heroku and you can make request to this URL
 https://movie-database-api1.herokuapp.com/api/v1/
 - POST /movies
 
-  Request body should contain only one element `movieTitle`. On success, movie will be saved into application database and you will be presented with object that will contain all movie details . 
+  Request body should contain only one element `title`. On success, movie will be saved into application database and you will be presented with object that will contain all movie details . 
   On error you will be presented with [error response](#responses).
 
 - GET /movies
@@ -45,18 +45,18 @@ https://movie-database-api1.herokuapp.com/api/v1/
   | ------------- | ------------- |
   | page  | Describes currently displayed page. Default value is `1`.  |
   | limit  | Decides how many movies will be displayed per page. Default value is `10`.  |
-  | columns | Columns to filter by. You can provide more than one column name by separating each one with comma. For example `Title, Year`. Note that all column names must be capitalized. | 
-  | values | Values for filtering. You can provide more than one value by separathing each one with comma, however please note that value index must match target column index. For example `Interstellar, 2014`. |
-  | orderBy | Name of column that will be used to sort movies. Default value is `Title`. Note that all column names must be capitalized. |
+  | columns | Columns to filter by. You can provide more than one column name by separating each one with comma. For example `title, year`. Note that all column names must be capitalized. | 
+  | values | Values for filtering. You can provide more than one value by separathing each one with comma, however please note that value index must match target column index. For example `Guardians of the Galaxy Vol. 2`. |
+  | orderBy | Name of column that will be used to sort movies. Default value is `title`. Note that all column names must be capitalized. |
   | order | Order of sorting. Available values are `DESC` and `ASC`. Default value is `ASC` |
 
-  Example query string `/movies?orderBy=Year&order=DESC&columns=Year&values=2014`. 
+  Example query string `/movies?orderBy=year&order=DESC&columns=year&values=2014`. 
   
   It will fetch all movies that were made in 2019, displayed in descending order based on year.
 
 - POST /comments
 
-  Request body must contain two parameters: `movieID` and `messege`. On success it will return object with your freshly created comment, 
+  Request body must contain two parameters: `movieID` and `comment`. On success it will return object with your freshly created comment, 
   on error you will be presented with [error response](#responses).
   
 - GET /comments
@@ -69,9 +69,9 @@ https://movie-database-api1.herokuapp.com/api/v1/
   | limit  | Decides how many comments will be displayed per page. Default value is `10`.  |
   | movieID  | If provided it will fetch all comments associated with this movie ID.  |
   
-   Example query string `/comments?movieID=5b78643989f11114a411e1c3`.
+   Example query string `/comments?movieID=5dc45af63176aa19689e4ab9`.
    
-   It will fetch all comments for movie with ID `5b78643989f11114a411e1c3`.
+   It will fetch all comments for movie with ID `5dc45af63176aa19689e4ab9`.
   
    # Responses
    
@@ -88,11 +88,11 @@ https://movie-database-api1.herokuapp.com/api/v1/
     {
       "statusCode": 400,
       "error": "Bad Request",
-      "message": "child \"movieTitle\" fails because [\"movieTitle\" is required]",
+      "message": "child \"title\" fails because [\"title\" is required]",
       "validation": {
           "source": "body",
           "keys": [
-              "movieTitle"
+              "title"
           ]
       }
     }
