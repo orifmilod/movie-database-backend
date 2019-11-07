@@ -46,11 +46,11 @@ https://movie-database-api1.herokuapp.com/api/v1/
   | page  | Describes currently displayed page. Default value is `1`.  |
   | limit  | Decides how many movies will be displayed per page. Default value is `10`.  |
   | columns | Columns to filter by. You can provide more than one column name by separating each one with comma. For example `title, year`. Note that all column names must be capitalized. | 
-  | values | Values for filtering. You can provide more than one value by separathing each one with comma, however please note that value index must match target column index. For example `Interstellar, 2014`. |
+  | values | Values for filtering. You can provide more than one value by separathing each one with comma, however please note that value index must match target column index. For example `Guardians of the Galaxy Vol. 2`. |
   | orderBy | Name of column that will be used to sort movies. Default value is `title`. Note that all column names must be capitalized. |
   | order | Order of sorting. Available values are `DESC` and `ASC`. Default value is `ASC` |
 
-  Example query string `/movies?orderBy=Year&order=DESC&columns=Year&values=2014`. 
+  Example query string `/movies?orderBy=year&order=DESC&columns=year&values=2014`. 
   
   It will fetch all movies that were made in 2019, displayed in descending order based on year.
 
