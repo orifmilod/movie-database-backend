@@ -11,11 +11,11 @@ async function fetchAllComments(query) {
 }
 
 async function addComment(comment, movieTitle) {
-  const foundMovie = await Movie.find({ Title: movieTitle });
+  const foundMovie = await Movie.findOne({ Title: movieTitle });
   const newComment = new Comment({
     _id: mongoose.Types.ObjectId(),
     comment,
-    movieID: foundMovie[0]._id
+    movieID: foundMovie._id
   });
   const data = await newComment.save();
   return data;
