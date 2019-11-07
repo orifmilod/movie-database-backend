@@ -4,9 +4,9 @@ This is simple REST API that interacts with external API (OMDb) build using Node
 
 
 # Requirements
-
 - Node.js and npm
 - MongoDB
+
 # What did I use? 
 - MongoDB and Mongoose for object Model schemas.
 - Eslint for having a better structured code.
@@ -14,6 +14,7 @@ This is simple REST API that interacts with external API (OMDb) build using Node
 - celebrate and Joi for securing routers request body.
 - nodemon to keep server running hot reloading our node.js app.
 - express, because its the best :) 
+
 # Installation
 - Clone the repo: ```git clone https://github.com/milad440550/movie-database-api```
 - Install dependencies: `npm install`
@@ -24,9 +25,12 @@ This is simple REST API that interacts with external API (OMDb) build using Node
   API_KEY='<API key for omdbapi>' || 'ABC'
   ```
 - `npm run server` will run server with `nodemon` and you are done! :)
+# How to test?
+- First complete installation then run ```npm run test``` and you are ready to go.
 
 # Endpoints
-
+Currently server is hosted on heroku and you can make request to this URL
+https://movie-database-api1.herokuapp.com/api/v1/
 - POST /movies
 
   Request body should contain only one element `movieTitle`. On success, movie will be saved into application database and you will be presented with object that will contain all movie details . 
