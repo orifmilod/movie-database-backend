@@ -4,8 +4,9 @@ const loaders = require('./loaders');
 
 async function startServer() {
   const app = express();
-  await loaders.init({ expressApp: app });
-  // API Routes
+  await loaders.init(app);
+
+  // Start listetning to PORT
   app.listen(PORT, err => {
     if (err) {
       console.log(err);
