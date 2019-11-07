@@ -1,6 +1,6 @@
 const express = require('express');
-const { PORT } = require('./config');
-const loaders = require('./loaders');
+const { PORT } = require('./src/config');
+const loaders = require('./src/loaders');
 
 async function startServer() {
   const app = express();

@@ -4,5 +4,6 @@ dotenv.config();
 
 module.exports = {
   PORT: process.env.PORT,
-  DB_URL: process.env.DB_URL
+  DB_URL: process.env.DB_URL,
+  API_KEY: process.env.API_KEY
 };
