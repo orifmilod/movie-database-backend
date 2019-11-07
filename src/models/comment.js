@@ -19,6 +19,6 @@ commentSchema.query.filterByMovie = function({ movieID }) {
   if (!movieID) {
     return this;
   }
-  return this.find(movieID);
+  return this.find({ movieID });
 };
 module.exports = mongoose.model('Comment', commentSchema, 'comments');
