@@ -14,5 +14,7 @@ function paginate({ page = 1, limit = 10 }) {
 
   return this.limit(limit).skip(skip);
 }
-
-module.exports = paginate;
+function trim(inputString) {
+  return inputString.trim();
+}
+module.exports = { paginate, trim };

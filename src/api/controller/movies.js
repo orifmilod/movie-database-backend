@@ -17,10 +17,10 @@ exports.getAllMovies = async (req, res) => {
 };
 
 exports.createMovie = async (req, res) => {
-  const { movieTitle } = req.body;
+  const { title } = req.body;
   try {
-    const newMovie = await addMovie(movieTitle);
-    return res.status(201).json({ newMovie });
+    const movie = await addMovie(title);
+    return res.status(201).json({ movie });
   } catch (error) {
     return res
       .status(400)

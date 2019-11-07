@@ -13,7 +13,7 @@ describe('GET /movies', () => {
       .then(res => {
         const movies = res.body;
         expect(movies).to.be.a('array');
-        expect(movies[0]).to.have.property('Title');
+        expect(movies[0]).to.have.property('title');
       });
   });
 });
@@ -24,14 +24,14 @@ describe('POST /movies', () => {
       .post('/movies')
       .set('Accept', 'application/json')
       .send({
-        movieTitle: 'Guardians of the Galaxy Vol. 2'
+        title: 'Guardians of the Galaxy Vol. 2'
       })
       .expect('Content-Type', /json/)
       .expect(201)
       .then(res => {
-        const { newMovie } = res.body;
-        expect(newMovie).to.be.a('object');
-        expect(Object.keys(newMovie).length).to.equal(27);
+        const { movie } = res.body;
+        expect(movie).to.be.a('object');
+        expect(Object.keys(movie).length).to.equal(27);
       });
   });
 
@@ -40,7 +40,7 @@ describe('POST /movies', () => {
       .post('/movies')
       .set('Accept', 'application/json')
       .send({
-        movieTitle: 'This is a wrong movie title'
+        title: 'This is a wrong movie title'
       })
       .expect('Content-Type', /json/)
       .expect(400)

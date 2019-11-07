@@ -9,7 +9,7 @@ router.post(
   '/',
   celebrate({
     body: Joi.object({
-      movieTitle: Joi.string().required()
+      title: Joi.string().required()
     })
   }),
   createMovie

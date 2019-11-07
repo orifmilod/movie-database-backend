@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { paginate } = require('../services/utils');
 
 const commentSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
@@ -12,7 +13,7 @@ const commentSchema = new mongoose.Schema({
 });
 
 // Implemented pagination
-commentSchema.query.paginate = require('../services/utils');
+commentSchema.query.paginate = paginate;
 
 commentSchema.query.filterByMovie = function({ movieID }) {
   if (!movieID) {

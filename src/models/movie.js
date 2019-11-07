@@ -1,36 +1,37 @@
 const mongoose = require('mongoose');
+const { paginate } = require('../services/utils');
 
 const movieSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  Title: String,
-  Year: String,
-  Rated: String,
-  Released: String,
-  Runtime: String,
-  Genre: String,
-  Director: String,
-  Writer: String,
-  Actors: String,
-  Plot: String,
-  Language: String,
-  Country: String,
-  Awards: String,
-  Poster: String,
-  Ratings: Array,
-  Metascore: Number,
+  title: String,
+  year: String,
+  rated: String,
+  released: String,
+  runtime: String,
+  genre: String,
+  director: String,
+  writer: String,
+  actors: String,
+  plot: String,
+  language: String,
+  country: String,
+  awards: String,
+  poster: String,
+  ratings: Array,
+  metascore: Number,
   imdbRating: Number,
   imdbVotes: String,
   imdbID: String,
-  Type: String,
-  DVD: String,
-  BoxOffice: String,
-  Production: String,
-  Website: String,
-  Response: String
+  type: String,
+  dVD: String,
+  boxOffice: String,
+  production: String,
+  website: String,
+  response: String
 });
 
 // Performs sorting based on provided object properties
-movieSchema.query.objectSort = function({ orderBy = 'Title', order = 'ASC' }) {
+movieSchema.query.objectSort = function({ orderBy = 'title', order = 'ASC' }) {
   return this.sort({ [orderBy]: order === 'ASC' ? 1 : -1 });
 };
 
@@ -62,6 +63,5 @@ movieSchema.query.filterByObject = function({ columns, values }) {
   return this.find(Options);
 };
 
-movieSchema.query.paginate = require('../services/utils');
-
+movieSchema.query.paginate = paginate;
 module.exports = mongoose.model('Movie', movieSchema, 'movies');
