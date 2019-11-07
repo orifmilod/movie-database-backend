@@ -1,10 +1,10 @@
 const express = require('express');
 const { celebrate, Joi, errors } = require('celebrate');
-const commentController = require('../controller/comments');
+const { addComment, getAllComments } = require('../controller/comments');
 
 const router = express.Router();
 
-router.get('/', commentController.getAllComments);
+router.get('/', getAllComments);
 router.post(
   '/',
   celebrate({
@@ -13,7 +13,7 @@ router.post(
       movieTitle: Joi.string().required()
     })
   }),
-  commentController.addComment
+  addComment
 );
 
 router.use(errors());

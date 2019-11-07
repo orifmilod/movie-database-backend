@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const Comment = require('../models/commentModel');
-const Movie = require('../models/movieModel');
+const Comment = require('../models/comment');
+const Movie = require('../models/movie');
 
 async function fetchAllComments(query) {
   // Filter by movie ID

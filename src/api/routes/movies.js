@@ -1,10 +1,10 @@
 const express = require('express');
 const { celebrate, Joi, errors } = require('celebrate');
-const movieController = require('../controller/movies');
+const { getAllMovies, createMovie } = require('../controller/movies');
 
 const router = express.Router();
 
-router.get('/', movieController.getAllMovies);
+router.get('/', getAllMovies);
 router.post(
   '/',
   celebrate({
@@ -12,7 +12,7 @@ router.post(
       movieTitle: Joi.string().required()
     })
   }),
-  movieController.createMovie
+  createMovie
 );
 
 router.use(errors());
