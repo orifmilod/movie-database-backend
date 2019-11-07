@@ -15,9 +15,13 @@
   },
   "rules": {
     "no-unused-vars": "warn",
+    "no-restricted-syntax": "off",
     "func-names": "off",
+    "no-await-in-loop": "off",
+    "no-undef": "off",
     "no-param-reassign": "off",
     "no-plusplus": "off",
+    "global-require": "off",
     "no-underscore-dangle": "off",
     "no-console": "off",
     "prettier/prettier": "error"
