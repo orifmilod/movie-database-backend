@@ -7,7 +7,13 @@ This is simple REST API that interacts with external API (OMDb) build using Node
 
 - Node.js and npm
 - MongoDB
-
+# What did I use? 
+- MongoDB and Mongoose for object Model schemas.
+- Eslint for having a better structured code.
+- supertest and chai for testing endpoint.
+- celebrate and Joi for securing routers request body.
+- nodemon to keep server running hot reloading our node.js app.
+- express, because its the best :) 
 # Installation
 - Clone the repo: ```git clone https://github.com/milad440550/movie-database-api```
 - Install dependencies: `npm install`
