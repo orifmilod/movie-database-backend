@@ -1,6 +1,6 @@
 const express = require('express');
 const { celebrate, Joi, errors } = require('celebrate');
-const movieController = require('../contoller/movies');
+const movieController = require('../controller/movies');
 
 const router = express.Router();
 

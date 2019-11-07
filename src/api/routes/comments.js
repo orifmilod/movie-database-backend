@@ -1,6 +1,6 @@
 const express = require('express');
 const { celebrate, Joi, errors } = require('celebrate');
-const commentController = require('../contoller/comments');
+const commentController = require('../controller/comments');
 
 const router = express.Router();
 
